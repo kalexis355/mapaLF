@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<head>
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<style>
+#map {
+width: 100%;
+height: 700px;
+box-shadow: 5px 5px 5px #888;
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
++ 'contributors',
+transparent: true,
+tiled: true
+});
+
+var map = L.map('map', {
+center: [1.6208178752937628, -75.60428740843184],
+zoom: 15,
+layers: osm,
+scrollWheelZoom: false,
+});
+L.control.scale().addTo(map);
+
+//Añadir un icono de marcador
+var myIcon = L.icon({
+iconUrl: 'https://lh4.googleusercontent.com/-g6riZwSTzQg/AAAAAAAAAAI/AAAAAAAAAAA/McnbJy-Y5g8/s55-p-k-no-ns-nd/photo.jpg',
+iconSize: [30, 50],
+popupAnchor: [-1, -10]
+});
+
+var marker = L.marker(
+[1.6208178752937628, -75.60428740843184],
+	{icon: myIcon})
+	.addTo(map)
+	.bindPopup('Universidad de la amazonia');
+	
+var myIcon2 = L.icon({
+iconUrl: 'https://w7.pngwing.com/pngs/518/728/png-transparent-webdom-computer-icons-location-map-marker-miscellaneous-angle-black-thumbnail.png',
+iconSize: [30, 50],
+popupAnchor: [-1, -10]
+});
+
+var marker2 = L.marker(
+[1.615077879955057, -75.61386268509914],{
+	}).addTo(map)
+	.bindPopup('Alcaldia de florencia')
+	
+
+//circulo o buffer
+var circle = L.circle([1.6154505588666743, -75.61389218939658], 500, {
+color: 'red',
+fillColor: '#f03',
+fillOpacity: 0.2
+}).addTo(map);
+
+var myIcon3 = L.icon({
+iconUrl: 'https://cdn-icons-png.flaticon.com/512/9/9770.png',
+iconSize: [30, 30],
+popupAnchor: [-1, -10]
+});
+
+var marker3 = L.marker(
+[1.615192965721433, -75.61331513172439],
+	{icon: myIcon3})
+	.addTo(map)
+	.bindPopup('Parque santander');
+	
+
+//Añadir un polígono
+var polygon = L.polygon([
+[1.6145228831936949, -75.61350058688123],
+[1.6151770822587508, -75.61369907034882],
+[1.6154022982815912, -75.6130446113476],
+[1.6147052009870926, -75.61282467020784]
+]).addTo(map)
+.bindPopup ('parque principal');
+polygon.bindTooltip ("Cra. 12, Florencia, Caquetá", {
+permanent: false
+})
+
+//Añadir una línea
+
+var point1 = new L.LatLng(1.6137024230377754, -75.60061925384684);
+var point2 = new L.LatLng(1.6140496313200863, -75.60194694731061);
+var point3 = new L.LatLng(1.614148833676425, -75.60230368110976);
+var point4 = new L.LatLng(1.6143083973769885, -75.60345034192524);
+var point5 = new L.LatLng(1.614313759671155, -75.60385937879956);
+var point6 = new L.LatLng(1.6143486145482573, -75.60400153587769);
+var point7 = new L.LatLng(1.6145295917898015, -75.60422550032968);
+var point8 = new L.LatLng(1.614565787235258, -75.60433681200404);
+var point9 = new L.LatLng(1.6145202077853182, -75.60451383779946);
+var point10 = new L.LatLng(1.6147373804493936, -75.60463721941446);
+var point11= new L.LatLng(1.6150805668432384, -75.60429523776418);
+var point12 = new L.LatLng(1.6152843337318035, -75.60419599603038);
+var point13 = new L.LatLng(1.6154612891710876, -75.60410748313271);
+var point14 = new L.LatLng(1.6155846217537293, -75.60418794940345);
+var point15= new L.LatLng(1.6156221337108931, -75.60427910856323);
+var point16= new L.LatLng(1.6188100099278373, -75.60639537147745);
+var point17 = new L.LatLng(1.620088912606878, -75.60518971852372);
+var point18= new L.LatLng(1.6201814118239113, -75.60522726945003);
+//var point19= new L.LatLng();
+
+var latlngs = [point1,point2,point3,point4,point5,point6
+,point7,point8,point9,point10,point11,point12,point13,point14,point15,
+point16,point17,point18];
+var polyline = L.polyline(
+latlngs, {color: 'red'}
+)
+.addTo(map)
+.bindPopup ('de camino a la Universidad');
+
+var marker4 = L.marker(
+[1.6137024230377754, -75.60061925384684],{
+	}).addTo(map)
+	.bindPopup('casa Kevin Trujillo')
+	.openPopup();
+</script>
+</body>
+</html>
